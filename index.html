@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Metrics Dashboard</title>
+</head>
+<body>
+    <div id="metrics">Loading...</div>
+    <script>
+        async function fetchMetrics() {
+            const response = await fetch('/metrics');
+            const data = await response.json();
+            document.getElementById('metrics').innerText = JSON.stringify(data, null, 2);
+        }
+        fetchMetrics();
+        setInterval(fetchMetrics, 5000); // Update every 5 seconds
+    </script>
+</body>
+</html>
